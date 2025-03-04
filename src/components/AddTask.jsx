@@ -7,8 +7,7 @@ function AddTask({ addTask }) {
 
 
   const submit = () => {
-
-    if(!title.length || !description.length){
+    if(!title.trim() || !description.trim()){
         setValidated(false);
         return;
     }

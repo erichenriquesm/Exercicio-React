@@ -1,28 +1,11 @@
 import { useState } from "react";
 import ListTasks from "./components/ListTasks";
 import AddTask from "./components/AddTask";
-import "./App.css"
+import { v4 } from "uuid";
+import "./App.css";
+
 function App() {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: "Estudar programação",
-      description: "Essa é uma descrição de uma tarefa.",
-      isCompleted: false
-    },
-    {
-      id: 2,
-      title: "Estudar inglês",
-      description: "Essa é uma descrição de uma tarefa sobre estudar inglês.",
-      isCompleted: true
-    },
-    {
-      id: 3,
-      title: "Estudar espanhol",
-      description: "Essa é uma descrição de uma tarefa sobre estudar espanhol.",
-      isCompleted: true
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
   const toggleTask = (taskId) => {    
     const newTasks = tasks.map((task) => {
@@ -42,7 +25,7 @@ function App() {
 
   const addTask = (title, description) => {
     const newTask = {
-      id: tasks.length + 1,
+      id: v4(),
       title,
       description,
       isCompleted: false
