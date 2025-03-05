@@ -1,28 +1,27 @@
 import { useState } from "react";
-import ListTasks from "./components/ListTasks";
-import AddTask from "./components/AddTask";
+import ListTasks from "../components/ListTasks";
+import AddTask from "../components/AddTask";
 import { v4 } from "uuid";
-import "./App.css";
 
-function App() {
+function HomePage() {
   const [tasks, setTasks] = useState([
     {
       id: 1,
       title: "Estudar programação",
       description: "Essa é uma descrição de uma tarefa.",
-      isCompleted: false
+      isCompleted: false,
     },
     {
       id: 2,
       title: "Estudar inglês",
       description: "Essa é uma descrição de uma tarefa sobre estudar inglês.",
-      isCompleted: true
+      isCompleted: true,
     },
     {
       id: 3,
       title: "Estudar espanhol",
       description: "Essa é uma descrição de uma tarefa sobre estudar espanhol.",
-      isCompleted: true
+      isCompleted: true,
     },
   ]);
 
@@ -71,4 +70,4 @@ function App() {
   );
 }
 
-export default App;
+export default HomePage;
