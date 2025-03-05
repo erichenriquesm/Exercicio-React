@@ -1,5 +1,6 @@
 import { ChevronLeft } from "lucide-react";
 import { useNavigate, useSearchParams } from "react-router";
+import Title from "../components/Title";
 
 function TaskPage() {
   const [searchParams] = useSearchParams();
@@ -15,9 +16,9 @@ function TaskPage() {
           <button onClick={() => navigate(-1)} className="absolute top-0 left-0 bottom-0">
             <ChevronLeft className="text-slate-100" />
           </button>
-          <h1 className="text-3xl text-slate-100 font-bold text-center">
+          <Title>
             Detalhes da tarefa
-          </h1>
+          </Title>
         </div>
 
         <div className="bg-slate-200 p-4 rounded-md">

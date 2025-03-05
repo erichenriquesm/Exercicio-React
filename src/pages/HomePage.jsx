@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ListTasks from "../components/ListTasks";
 import AddTask from "../components/AddTask";
 import { v4 } from "uuid";
+import Title from "../components/Title";
 
 function HomePage() {
   const [tasks, setTasks] = useState(
@@ -18,7 +19,7 @@ function HomePage() {
     if (JSON.parse(localStorage.getItem("tasks"))?.length) {
       return;
     }
-    fetch("https://jsonplaceholder.typicode.com/todos?_limit=10")
+    fetch("https://jsonplaceholder.typicode.com/todos?_limit=5")
       .then((data) => data.json())
       .then((parsedData) => {
         const parsedTasks = parsedData.map((task) => {
@@ -64,9 +65,9 @@ function HomePage() {
   return (
     <div className="w-screen h-screen bg-slate-500 flex justify-center p-6">
       <div className="w-[500px] space-y-4">
-        <h1 className="text-3xl text-slate-100 font-bold text-center">
+        <Title>
           Gerenciador de tarefas
-        </h1>
+        </Title>
 
         <AddTask addTask={addTask} />
         <ListTasks

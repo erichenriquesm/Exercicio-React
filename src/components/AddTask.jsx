@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Input from "./Input";
 
 function AddTask({ addTask }) {
   const [title, setTitle] = useState("");
@@ -20,14 +21,14 @@ function AddTask({ addTask }) {
 
   return (
     <div className="space-y-4 p-6 mb-2 bg-slate-200 rounded-md shadow flex flex-col">
-      <input
-        type="text"
-        placeholder="Digite o título da tarefa"
-        className="border border-slate-300 outline-slate-400 px-4 py-2 rounder-md"
+      <Input 
+        type={"text"} 
+        placeholder={"Digite o título da tarefa"} 
         value={title}
         onChange={(event) => setTitle(event.target.value)}
       />
-      <input
+
+      <Input
         type="text"
         placeholder="Digite a descrição da tarefa"
         className="border border-slate-300 outline-slate-400 px-4 py-2 rounder-md"
@@ -36,7 +37,6 @@ function AddTask({ addTask }) {
       />
       <button
         onClick={submit}
-        className="bg-slate-500 text-white px-4 py-2 rounded-2 font-medium"
       >
         Adicionar
       </button>
