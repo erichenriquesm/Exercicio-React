@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Input from "./Input";
+import Button from "./Button";
 
 function AddTask({ addTask }) {
   const [title, setTitle] = useState("");
@@ -35,11 +36,11 @@ function AddTask({ addTask }) {
         value={description}
         onChange={(event) => setDescription(event.target.value)}  
       />
-      <button
+      <Button
         onClick={submit}
       >
         Adicionar
-      </button>
+      </Button>
       <p className="text-red-500">
         {!validated ? 'Preencha os campos corretamente' : ''}
       </p>
