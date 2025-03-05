@@ -43,7 +43,7 @@ function ListTasks({ tasks, toggleTask, deleteTask }) {
           );
         })
       ) : (
-        <li className="text-center text-slate-400">Sem tarefas registradas</li>
+        <li className="text-center text-slate-400">Sem tarefas registradas.</li>
       )}
     </ul>
   );

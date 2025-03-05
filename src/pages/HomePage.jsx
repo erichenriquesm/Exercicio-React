@@ -1,29 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ListTasks from "../components/ListTasks";
 import AddTask from "../components/AddTask";
 import { v4 } from "uuid";
 
 function HomePage() {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      title: "Estudar programação",
-      description: "Essa é uma descrição de uma tarefa.",
-      isCompleted: false,
-    },
-    {
-      id: 2,
-      title: "Estudar inglês",
-      description: "Essa é uma descrição de uma tarefa sobre estudar inglês.",
-      isCompleted: true,
-    },
-    {
-      id: 3,
-      title: "Estudar espanhol",
-      description: "Essa é uma descrição de uma tarefa sobre estudar espanhol.",
-      isCompleted: true,
-    },
-  ]);
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem("tasks")) || []
+  );
+
+  // Basicamente um watch
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  // Passar um array vazio no segundo parâmetro faz com que a closure seja executada apenas uma única vez. Basicamente um mounted.
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("tasks"))?.length) {
+      return;
+    }
+    fetch("https://jsonplaceholder.typicode.com/todos?_limit=10")
+      .then((data) => data.json())
+      .then((parsedData) => {
+        const parsedTasks = parsedData.map((task) => {
+          return {
+            id: task.id,
+            title: task.title,
+            description: "",
+            isCompleted: task.completed,
+          };
+        });
+
+        setTasks(parsedTasks);
+      });
+  }, []);
 
   const toggleTask = (taskId) => {
     const newTasks = tasks.map((task) => {
